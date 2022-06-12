@@ -6,9 +6,9 @@ const UserGreeting = (props) => {
   };
   return (
     <Card>
-      <div onClick={onDeleteHandler}>
+      <li onClick={onDeleteHandler}>
         {props.name} ({props.age} years old.)
-      </div>
+      </li>
     </Card>
   );
 };

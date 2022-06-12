@@ -1,12 +1,11 @@
 import UserGreeting from "./UserGreeting";
-import styles from "./UsersList.module.css";
 
 const UsersList = (props) => {
   const onDeleteHandler = (id) => {
     props.onDelete(id);
   };
   return (
-    <div>
+    <ul style={{ padding: 0, margin: 0 }}>
       {props.userInput.map((user) => {
         return (
           <UserGreeting
@@ -18,7 +17,7 @@ const UsersList = (props) => {
           />
         );
       })}
-    </div>
+    </ul>
   );
 };
 
