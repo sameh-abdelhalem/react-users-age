@@ -7,7 +7,6 @@ function App() {
   const onClickHandler = (enteredValues) => {
     const userData = { ...enteredValues, id: Math.random().toString() };
     setUserInput([...userInput, userData]);
-    console.log(userInput);
   };
   const onDeleteHandler = (id) => {
     setUserInput((prevState) => {

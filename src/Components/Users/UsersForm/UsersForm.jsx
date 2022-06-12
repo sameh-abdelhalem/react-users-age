@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../../UI/Button";
+import Card from "../../UI/Card";
 import styles from "./UsersForm.module.css";
 const UsersForm = (props) => {
   const [enteredValues, setEnteredValues] = useState({ name: "", age: "" });
@@ -16,23 +17,39 @@ const UsersForm = (props) => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    setEnteredValues((prevState) => {
-      return { ...prevState, id: Math.random().toString() };
-    });
 
-    props.onClick(enteredValues);
+    if (enteredValues.name.length > 0 && enteredValues.age > 0) {
+      props.onClick(enteredValues);
+      setEnteredValues({ name: "", age: "" });
+    } else if (enteredValues.name.length <= 0) {
+      console.log("Please enter a valid Name ");
+    } else {
+      console.log("Please enter a valid Age ");
+    }
   };
 
   return (
-    <form className={styles["form-control"]} onSubmit={formSubmitHandler}>
-      <label>User</label>
-      <input type="text" onChange={onUserChangeHandler} />
-      <label>Age</label>
-      <input type="text" onChange={onAgeChangeHandler} />
-      <Button enteredValues={enteredValues} type="submit">
-        Add User
-      </Button>
-    </form>
+    <Card>
+      <form className={styles["form-control"]} onSubmit={formSubmitHandler}>
+        <label htmlFor="username">User</label>
+        <input
+          type="text"
+          id="username"
+          value={enteredValues.name}
+          onChange={onUserChangeHandler}
+        />
+        <label htmlFor="userage">Age</label>
+        <input
+          type="text"
+          id="userage"
+          value={enteredValues.age}
+          onChange={onAgeChangeHandler}
+        />
+        <Button enteredValues={enteredValues} type="submit">
+          Add User
+        </Button>
+      </form>
+    </Card>
   );
 };
 

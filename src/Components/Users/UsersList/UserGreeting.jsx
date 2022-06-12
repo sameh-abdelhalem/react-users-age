@@ -1,11 +1,15 @@
+import Card from "../../UI/Card";
+
 const UserGreeting = (props) => {
   const onDeleteHandler = () => {
     props.onDelete(props.id);
   };
   return (
-    <div onClick={onDeleteHandler}>
-      {props.name} ({props.age} years old.)
-    </div>
+    <Card>
+      <div onClick={onDeleteHandler}>
+        {props.name} ({props.age} years old.)
+      </div>
+    </Card>
   );
 };
 
