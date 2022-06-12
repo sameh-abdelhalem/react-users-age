@@ -1,8 +1,10 @@
 import { useState } from "react";
+import Wrapper from "../../Helpers/Wrapper";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
 import ErrorModal from "../../UI/ErrorModal";
 import styles from "./UsersForm.module.css";
+
 const UsersForm = (props) => {
   const [enteredValues, setEnteredValues] = useState({ name: "", age: "" });
   const [error, setError] = useState();
@@ -37,7 +39,7 @@ const UsersForm = (props) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       {error && (
         <ErrorModal
           title={error.title}
@@ -68,7 +70,7 @@ const UsersForm = (props) => {
           ></Button>
         </form>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 
